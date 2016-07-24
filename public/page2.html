@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <!--
+    Page 2:
+    A form with the following fields :
+    Name, Email, Password : All Text fields
+    Where did you hear form us : A select input.
+    Do you want to hear from us : A radio/checkbox  button.
+    Have the following validations:
+    1. User name and password should be not null and between 4 to 10 characters.s
+    2. Email should be in a proper format.
+    3. Do you want to hear from us should be checked.
+    Also try to demonstrate the pristine and dirty classes on the form level.
+    -->
+
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <script src="../bower_components/angular/angular.js"></script>
+    <!-- <script src="assignment_1_2_ClassValidations.js"></script> -->
+<!--
+    <script>
+    angular.module("registerApp", [])
+            .controller("regCtrl", function ($scope) {
+                $scope.person = {}; // will contain name, email, password, channels, hearFromUs
+                $scope.nameInvalid = false;
+                $scope.emailInvalid = false;
+                $scope.passwordInvalid = false;
+                $scope.researchInvalid = false;
+                $scope.hearFromUsInvalid = false;
+                $scope.doShow = false;
+
+                $scope.person.channels = [
+                    { value: "television", label: "Television" },
+                    { value: "radio", label: "Radio" },
+                    { value: "email", label: "Email" },
+                    { value: "facebook", label: "Facebook" },
+                    { value: "other-social-media", label: "Other Social Media"},
+                    { value: "other", label: "Other"}
+                ];
+
+                $scope.person.hearFromUs = false;
+
+
+                $scope.register =  function(){  // register variable of $scope is defined as a function()
+                    if ( (!$scope.registrationForm.name.$valid))     {
+                        $scope.nameInvalid = true;
+                    }
+
+                    if(!$scope.registrationForm.email.$valid){
+                        $scope.emailInvalid = true;
+                    }
+                    if(!$scope.registrationForm.password.$valid){
+                        $scope.passwordInvalid = true;
+                    }
+                    if(!$scope.registrationForm.hearFromUs.$valid){
+                       $scope.hearFromUsInvalid = true;
+                    }
+                    if(!$scope.registrationForm.channels.$valid){
+                        $scope.researchInvalid = true;
+                    }
+                    if($scope.registrationForm.$valid){
+                        $scope.doShow = true;
+                    }
+
+                };
+            });
+</script>
+
+-->
+
+    <script src="controllers/page2.js"></script>
+
+    <style>
+        form .ng-pristine { background-color: lightgoldenrodyellow; }
+        form .ng-invalid.ng-dirty { background-color: indianred; }
+        form .ng-valid.ng-dirty { background-color: lightgreen; }
+
+        input[name='email'].ng-dirty.ng-invalid {
+            color: red;
+        }
+
+        input[name='email'].ng-dirty.ng-valid {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="page2" ng-controller="page2Ctrl">
+    <div ng-show="registrationForm.$pristine">Form input has not yet started (form is in pristine state)</div>
+
+
+    <div ng-show="registrationForm.$dirty">Form input has started (form is in dirty state)</div>
+
+
+    <form name="registrationForm" class="form-horizontal" ng-submit="register()" novalidate>
+
+        <div class="well">
+            <!-- name (muat be between 4 and 10 characters as specified by minlengh and maxlength attributes) -->
+            <div class="form-group">
+                <label for="name" class="control-label col-sm-2"> Name: </label>
+                <div class="col-sm-5">
+                    <input type="text" id="name" placeholder="Name" name="name" minlength="4" maxlength="10" ng-model="person.name"
+                           required class="form-control col-sm-10" >
+                    <span style="color:red" ng-show="nameInvalid">Please enter a string between 4 and 10 characters for Name</span>
+                    <br>
+                    </div>
+            </div>
+
+            <!-- email -->
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label"> Email Address: </label>
+                <div class="col-sm-5">
+                    <input class="form-control" id="email" type="email" placeholder="Email" name="email" ng-model="person.email" required>
+                    </div>
+                <span style="color:red" ng-show="emailInvalid"><br/>A valid email address is required</span>
+            </div>
+
+            <!-- password (muat be between 4 and 10 characters as specified by minlengh and maxlength attributes) -->
+            <div class="form-group">
+                <label for="password" class="control-label col-sm-2">Password:</label>
+                <div class="col-sm-5">
+                <input class="form-control" type="password" id="password" placeholder="password" name="password" minlength="4" maxlength="10"
+                       ng-model="person.password" required class="form-control col-sm-10">
+                <span  style="color:red" ng-show="passwordInvalid">Please enter a string between 4 and 10 characters for password </span>
+                    <br/>
+                    </div>
+            </div>
+
+            <!-- Select Where hear from us? -->
+            <div class="form-group">
+                <label for="channels" class="control-label col-sm-2">Where did you hear from us: </label>
+                <div class="col-sm-5">
+                    <select name="channels" id="channels" ng-model="person.channels"
+                            ng-options="obj.value as obj.label for obj in person.channels" class="form-control">
+                        <option value="">Where did you hear about us?</option>
+                    </select>
+                    <span ng-show="researchInvalid"><br/>Please tell us where you heard about us</span>
+                </div>
+            </div>
+
+            <!-- hearFromUs checkbox -->
+            <div>
+                <label for="hearFromUs">Do you want to hear from us?</label>
+                    <input ng-model="person.hearFromUs" type="checkbox" name="hearFromUs"
+                           id="hearFromUs" value="hearFromUs" class="checkbox-inline" required/>
+                    <span style="color:red" ng-show="hearFromUsInvalid">This box must be checked</span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-default">
+            </div>
+        </div>
+
+    </form>
+
+    <div ng-show="doShow">     Thank you for register!</div>
+
+</div>
+
+
+
+</body>
+</html>

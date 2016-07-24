@@ -1,0 +1,132 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="robots" content="index">
+        <meta name="description" content="new post form">
+        <meta name="keywords" content="new post form">
+
+        <style type="text/css">
+            .scrollabletextbox {
+                width:450px; 
+                height:100px;                      
+                overflow:scroll;
+                overflow-x:hidden;
+            }
+            </style>
+        <script src="../bower_components/angular/angular.js"></script>
+			<script src="controllers/page5browsePost.js"></script>
+        </head>
+
+        <body>
+		<p>postUser / Browse Post</p>
+            <div ng-app="page5browsePost" ng-controller="page5browsePostCtrl">
+                <table class="table">
+                    <thead>
+                    <tr>
+                            <th>SubCat</th>
+                            <th>Location</th>
+                        <th>Title</th> <!-- Name -->
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Timestamp</th>
+                        <th>Email</th>
+                        <th>Image 1</th>
+                        <th>Image 2</th>
+                        <th>Image 3</th>
+                        <th>Image 4</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="contact in contactlist">
+                            <td>{{contact.SubCategory_ID}}</td>
+                            <td>{{contact.Location_ID}}</td>
+                        <td>{{contact.title}}</td>
+                             <td>{{contact.Price}}</td>
+                             <td>{{contact.Description}}</td>
+                             <td>{{contact.TimeStamp}}</td>
+                        <td>{{contact.email}}</td>
+
+                        <td><a href=  images/th.jpe> <img src="images/{{contact.Image_1}}" width="140" height="80"></a></td>
+                        <td><a href=  images/th.jpe> <img src="images/{{contact.Image_2}}" width="140" height="80"></a></td>
+                        <td><a href=  images/th.jpe> <img src="images/{{contact.Image_3}}" width="140" height="80"></a></td>
+                        <td><a href=  images/th.jpe> <img src="images/{{contact.Image_4}}" width="140" height="80"></a></td>
+                        <!-- <td>{{contact.Image_3}}</td> -->
+
+                    </tr>
+                    </tbody>
+                </table>
+                <button ng-click="getData()">get my Data !!!</button>
+
+                </div>
+		</body>
+    </html>
+
+<!--SubCategory_ID: rows[i].SubCategory_ID,
+					Location_ID: rows[i].Location_ID,
+					title: rows[i].Title,
+					Price: rows[i].Price,
+					Description: rows[i].Description,
+					TimeStamp: rows[i].TimeStamp,
+					email: rows[i].Email,
+					Image_1: rows[i].Image_1,
+
+
+
+
+Title` char(90) NOT NULL,
+`Price` float DEFAULT NULL,
+`Description` text,
+`Email` char(90) DEFAULT NULL,
+`Agreement` tinyint(1) DEFAULT NULL,
+`TimeStamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+`Image_1` text,
+`Image_2` text,
+`Image_3` text,
+`Image_4
+-->
+
+
+<!--
+//------------------------------------
+// object-oriented display
+//------------------------------------
+            $displayTab = new BrowsePostDisplay(); // instantiate BrowsePostDisplay class browsePost_class.php
+
+            echo "<h2>Browse posts</h2>";
+
+// generate a form for user to select which Sub-Category and which location to display
+browsePostForm(); // from browsePostForm.php            
+
+            if (isset($_POST['subcat'])) {
+                $subcat_browse = $_POST['subcat'];
+            } else {
+                $subcat_browse = "all_category";
+            }
+            if (isset($_POST['location'])) {
+                $location_browse = $_POST['location'];
+            } else {
+                $location_browse = "all_location";
+            }
+
+            echo "Sub-Category selected = " . $subcat_browse . "<br>";
+            echo "Location selected = " . $location_browse . "<br>";
+            echo "<br>";
+            echo "You can click on any image to view enlarged picture<br><br>";
+
+
+//---------------------------------
+// display posts in table form
+// use function displayTable()  from $diaplayTab instance to display posts
+//---------------------------------
+            $dis1 = $displayTab->displayTable($subcat_browse, $location_browse);
+            echo ($dis1);
+            echo "<br>"; // write posts to page
+
+            echo "<hr><br>";
+
+-->
+
+

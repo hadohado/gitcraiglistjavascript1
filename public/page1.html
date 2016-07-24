@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instructor list</title>
+    <!--
+    Page 1:
+    Using the hard coded array below:
+    var instructors= [’Vivek Sharma', ’Lory Nuemann', ’Andy Hou', ’Richard Parriera'];
+    The instructors variable is simply a hardcoded
+    array of instructor names.
+    Now create a page which iterate through the array and shows us the number of the
+    instructors and also display them in the grid.
+    Also have a checkbox over there, on the click of which we can flip the view to the list
+    view.
+    -->
+
+    <script src="../bower_components/angular/angular.js"></script>
+<!--
+    <script>
+        angular.module("myApp", []).controller("myController", ['$scope', function ($scope) {
+            var instructors = ["Vivek Sharma", "Lory Nuemann", "Andy Hou", "Richard Parriera"];
+            var numInst = instructors.length;
+
+            $scope.instructors = instructors;
+            $scope.numInst = numInst;
+            $scope.showList;
+
+        }]);
+    </script>
+    -->
+    <script src="controllers/page1.js"></script>
+</head>
+
+<body ng-app="page1" ng-controller="page1Ctrl">
+<h1>Instructor array (displayed as table or list)</h1>
+<p>
+    <label for="showlistID">Use the list view</label>
+    <input type="checkbox" name="showlistID" id="showlistID" ng-model="showList">
+</p>
+
+
+<p id="id_inst">
+    Number of instructors = {{numInst}}
+    <br>
+
+<table border="1" ng-hide="showList">
+    <tr>
+        <th>idx</th>
+        <th>Instructor name</th>
+    </tr>
+    <tr ng-repeat="inst in instructors">
+        <td>{{$index + 1}}</td>
+        <td>{{inst}}</td>
+    </tr>
+</table>
+
+<ol ng-show="showList">
+    <li ng-repeat="x in instructors">
+        {{ x }}
+    </li>
+</ol>
+</p>
+
+</body>
+</html>

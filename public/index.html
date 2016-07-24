@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+    <script src="../bower_components/angular/angular.js"></script>
+
+    <!-- need angular route service -->
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="controllers/page1.js"></script>
+    <script src="controllers/page2.js"></script>
+    <script src="controllers/page3.js"></script>
+    <script src="controllers/page4newpost.js"></script>
+    <script src="controllers/page5browsePost.js"></script>
+    <script src="controllers/routeApp.js"></script>
+
+    <style type="text/css">
+        .bs-example{
+            margin: 20px;
+        }
+    </style>
+
+
+</head>
+
+<body ng-app="routeApp">
+
+<!--
+<body ng-app="routeApp" ng-controller="routeAppCtrl">
+-->
+<div class="bs-example">
+    <nav role="navigation" class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Brand</a>
+        </div>
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!--  this original  code in class
+                <li class="active"><a href="#/page1">page 1</a></li>
+                -->
+                <!-- I comment out the class="active" and  see that page1 "button"  is not high-lighted -->
+                <li><a href="#/page1">page 1 home</a></li>
+                <li><a href="#/page2">Page 2 login</a></li>
+                <li><a href="#/page3view">Page 3 register</a></li>
+                <li><a href="#/page4newpost">Page 4 New post</a></li>
+                <li><a href="#/page5browsePost">Page 5 browse</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<!--
+<li><a href="#/page5browsePost">Page 5 browse</a></li>
+
+<li><a href="#/postUser/page5browsePost">Page 5 browse</a></li>
+-->
+
+
+<div>
+    <div ng-view></div>
+</div>
+
+<script src="controllers/routeApp.js"></script>
+
+</body>
+</html>
