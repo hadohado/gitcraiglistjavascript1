@@ -5,8 +5,9 @@
 // angular.module('routeApp', ['route', 'page1', 'page2', 'myDirective'])
 // angular.module('routeApp', ['ngRoute', 'page1', 'page2', 'page3Ctrl'])
 // angular.module('your main angular module name', [ name of other angular modules this angular module depends on]  )
-angular.module('routeApp', ['ngRoute', 'page1', 'page2', 'page3angularmodule', 'page4newpost', 'page5browsePost'])
+angular.module('routeApp', ['ngRoute', 'page1', 'page2', 'page3register', 'page4newpost', 'page5browsePost'])
     .config(function($routeProvider) {
+        
         $routeProvider.when('/page1', {
             controller: 'page1Ctrl',
             templateUrl: 'page1.html'  //   ../page1.html
@@ -16,9 +17,9 @@ angular.module('routeApp', ['ngRoute', 'page1', 'page2', 'page3angularmodule', '
             templateUrl: 'page2.html'
 
         });
-        $routeProvider.when('/page3view', {
-            controller: 'page3Ctrl',
-            templateUrl: 'page3.html'
+        $routeProvider.when('/page3register', {
+            controller: 'page3registerCtrl',
+            templateUrl: 'page3register.html'
         });
 
         $routeProvider.when('/page4newpost', {

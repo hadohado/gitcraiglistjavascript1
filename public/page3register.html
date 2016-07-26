@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title> <!-- custom directive -->
+
+    <script src="../bower_components/angular/angular.js"></script>
+
+    <!--
+    <script>
+        angular.module('customDirApp', []).controller('customDirAppCtrl', ['$scope', function ($scope) {
+            $scope.logMouseOver = function () {
+                console.log("Users hovers mouse over message");
+            };
+        }])
+            // call directive( ) function to register a custom directive
+            .directive('myDirectiveMouseOver', function () {
+                return { // return function or config object
+                    restrict: 'E', // 'E' means  this directive is for a HTML element
+                    // value of template will replace the custom directive 'myDirectiveMouseOver' in HTML page
+                    template: '<div>"Console will log a message when user hovers mouse over this message"</div>',
+                    link: function (scope, element, attr) {
+                        console.log(attr['onEnter']);
+                        element.bind("mouseover", function () { // whenever there is mouseover event calls logMouseOver()
+                            scope.logMouseOver();
+                        })
+                     }
+                };
+            })
+
+    </script>
+    -->
+
+    <script src="controllers/page3register.js"></script>
+</head>
+
+
+<body>
+
+
+
+<div ng-app="page3register" ng-controller="page3registerCtrl">
+    <div ng-show="registerUserForm.$pristine">Form input has not yet started (form is in pristine state)</div>
+    <div ng-show="registerUserForm.$dirty">Form input has started (form is in dirty state)</div>
+
+    <form name="registerUserForm" class="form-horizontal" ng-submit="registeruser()" novalidate>
+        <div class="well">
+
+            <!-- .................. email ..........................  -->
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label"> Email Address: </label>
+                <div class="col-sm-5">
+                    <input class="form-control" id="email" type="email" placeholder="Email" name="email" ng-model="person.email" required>
+                </div>
+                <span style="color:red" ng-show="emailInvalid"><br/>A valid email address is required</span>
+            </div>
+
+            <!-- password (muat be between 4 and 10 characters as specified by minlengh and maxlength attributes) -->
+            <div class="form-group">
+                <label for="password" class="control-label col-sm-2">Password:</label>
+                <div class="col-sm-5">
+                    <input class="form-control" type="password" id="password" placeholder="password" name="password" minlength="4" maxlength="10"
+                           ng-model="person.password" required class="form-control col-sm-10">
+                    <span  style="color:red" ng-show="passwordInvalid">Please enter a string between 4 and 10 characters for password </span>
+                    <br/>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-default">
+            </div>
+        </div>
+
+    </form>
+
+    <div ng-show="doShow">     Thank you for register!</div>
+
+</div>
+
+</body>
+</html>
+

@@ -35,7 +35,7 @@ app.get('/', function(req, res) { // '/' means set the route to our index place
 });
 */
 var mysql = require("mysql");
-
+var md5   = require ("js-md5"); // july-27
 // resultRows = [];
 
 
@@ -44,6 +44,104 @@ var mysql = require("mysql");
 // S.10   setup html template
 // we use index.html  so next command tell server where to look for index.html
 app.use(express.static( __dirname + "/public")); //  _-dirname + ...  <-- where to  find static  file
+
+
+//-----------------------------------------
+// login user
+//-----------------------------------------
+app.post('/loginuser', function (req, res) {
+
+	console.log("I received a POST req to register user");
+	var myemail = req.body.Email;
+	var mypassword = md5(req.body.Password) ;
+
+	var con = mysql.createConnection({
+		host: "localhost",
+		user: "mysql",
+		password: "",
+		database: "lamp_final_project"
+	});
+
+	con.connect(function(err){
+		if(err){
+			console.log('Error connecting to Db');
+			return;
+		}
+		console.log('Connection established');
+	});
+
+	var newuser = {
+		email: myemail,
+		password: mypassword
+	};
+
+	// con.query('INSERT INTO user SET ?', newuser,
+	//	function(err,rows){
+	//		if(err) throw err;
+	//		console.log('Data written to Db:\n');
+	//		
+	//	});
+
+});
+
+/////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+
+
+//-----------------------------------------
+// wrtite to database to register user
+//-----------------------------------------
+app.post('/registeruser', function (req, res) {
+
+	console.log("I received a POST req to register user");
+	var myemail = req.body.Email;
+	var mypassword = md5(req.body.Password) ;
+
+	var con = mysql.createConnection({
+		host: "localhost",
+		user: "mysql",
+		password: "",
+		database: "lamp_final_project"
+	});
+
+	con.connect(function(err){
+		if(err){
+			console.log('Error connecting to Db');
+			return;
+		}
+		console.log('Connection established');
+	});
+
+	var newuser = {
+		email: myemail,
+		password: mypassword
+	};
+	con.query('INSERT INTO user SET ?', newuser,
+		function(err,rows){
+			if(err) throw err;
+
+			console.log('Data written to Db:\n');
+			// var person1 = {name: rows[0].Title, email: rows[0].Email, number: "111-111-1111"};
+
+		});
+});
+
+/////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
 
 //-----------------------------------------
 // wrtite to database

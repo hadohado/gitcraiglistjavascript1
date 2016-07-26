@@ -33,34 +33,54 @@
 </head>
 
 <body ng-app="page1" ng-controller="page1Ctrl">
-<h1>Instructor array (displayed as table or list)</h1>
-<p>
-    <label for="showlistID">Use the list view</label>
-    <input type="checkbox" name="showlistID" id="showlistID" ng-model="showList">
+
+<h1>Mini-Craiglist</h1>
+
+<div class="well">
+<p>Welcome to mini-craiglist web site. You can perform one of these activities by clicking on one of the buttons above:
 </p>
+<p>
+    - Log in as a registered user before posting<br>
+    - Register as new user<br>
+    - Browse all postings<br>
+    - Creater a new post.<br>
+</p>
+<p>User can post or browse as a registered or non-registered user.<br>Click on "New Post" button above to post to one of these categories:</p>
 
+<table border="1">
+    <tr><th>Category</th><th>Sub-Category</th></tr>
+    <tr><td rowspan="3">jobs</td><td>software</td></tr>
+    <tr>                         <td>accounting</td></tr>
+    <tr>                         <td>business</td></tr>
 
-<p id="id_inst">
-    Number of instructors = {{numInst}}
-    <br>
+    <tr><td  rowspan="3">housing</td><td>apartment</td></tr>
+    <tr>                             <td>office</td></tr>
+    <tr>                             <td>vacation rental</td></tr>
 
-<table border="1" ng-hide="showList">
-    <tr>
-        <th>idx</th>
-        <th>Instructor name</th>
-    </tr>
-    <tr ng-repeat="inst in instructors">
-        <td>{{$index + 1}}</td>
-        <td>{{inst}}</td>
-    </tr>
+    <tr><td rowspan="3">for sale</td><td>jewelry</td></tr>
+    <tr>                             <td>household</td></tr>
+    <tr>                             <td>electronics</td></tr>
 </table>
 
-<ol ng-show="showList">
-    <li ng-repeat="x in instructors">
-        {{ x }}
-    </li>
-</ol>
+<p>Pick one of these locations:
 </p>
+
+<table border="1">
+    <tr><th>Region</th><th>Location</th></tr>
+    <tr><td rowspan="3">usa</td><td>san francisco</td></tr>
+    <tr>                        <td>LA</td></tr>
+    <tr>                        <td>washington</td></tr>
+
+    <tr><td rowspan="3">europe</td><td>paris</td></tr>
+    <tr>                           <td>rome</td></tr>
+    <tr>                           <td>london</td></tr>
+
+    <tr><td rowspan="3">asia</td><td>saigon</td></tr>
+    <tr>                          <td>tokyo</td></tr>
+    <tr>                          <td>dehli</td></tr>
+</table>
+
+</div>
 
 </body>
 </html>

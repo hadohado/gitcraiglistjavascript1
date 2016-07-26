@@ -4,8 +4,8 @@
 
 //angular.module('customDirApp', [])
 //    .controller('customDirAppCtrl', ['$scope', function ($scope) {
-angular.module('page3angularmodule', [])
-    .controller('page3Ctrl', ['$scope', function ($scope) {
+angular.module('page3register', [])
+    .controller('page3registerCtrl', ['$scope', function ($scope) {
 
                 $scope.logMouseOver = function () {
         console.log("Users hovers mouse over message");
