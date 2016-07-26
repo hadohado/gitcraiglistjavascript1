@@ -158,7 +158,8 @@ app.post('/newpost', function (req, res) {
 	var con = mysql.createConnection({
 		host: "localhost",
 		user: "mysql",
-		password: "",
+		password: "clinton",
+		// password: "",
 		database: "lamp_final_project"
 	});
 
@@ -300,6 +301,6 @@ app.get('/contactlist', function(req, res) {
 	}
 	);
 
-app.listen(3000);
+app.listen(8080); //3000
 console.log("Hi from server.js  on port 3000");
 
